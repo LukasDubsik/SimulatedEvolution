@@ -6,7 +6,6 @@ public class CameraMovement : MonoBehaviour
 {
     private float yaw = 0.0f;
     private float pitch = 0.0f;
-    private Vector3 cameraDirection;
     private Vector3 positionMove;
     private bool plus;
     Rigidbody myRigidbody;
@@ -16,13 +15,16 @@ public class CameraMovement : MonoBehaviour
     public float speedH = 2.0f;
     public float speedV = 2.0f;
 
+    public Vector3 cameraDirection;
+    public Vector3 cameraPosition;
+
     public GenerateSampleCube generateCube = new GenerateSampleCube();
     private HoldInformation information;
     private WorldSettings settings;
 
     void Start()
     {
-        cameraDirection = this.transform.forward;
+        cameraDirection = this.transform.forward; 
         myRigidbody = GetComponent<Rigidbody>();
         information = GameObject.FindObjectOfType<HoldInformation>();
         settings = FindObjectOfType<WorldSettings>();
@@ -77,7 +79,7 @@ public class CameraMovement : MonoBehaviour
 
             transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
         }
-
+        
         //Get direction for creating cube
         if (information.sampling == true)
         {
@@ -86,7 +88,24 @@ public class CameraMovement : MonoBehaviour
             cameraDirection += this.transform.position;
             generateCube.DecideOnGenerateMesh(cameraDirection);
         }
-        else { MapDestroy.DestroySampleCube(); }
+        else if (information.sampling == false) { MapDestroy.DestroyMesh("SampleCube"); }
+
+        cameraDirection = this.transform.forward;
+        cameraPosition = this.transform.position;
+    }
+
+    public void StopCamera()
+    {
+        cameraSpeed = 0f;
+        speedH = 0f;
+        speedV = 0f;
+    }
+
+    public void StartCamera()
+    {
+        cameraSpeed = 2.0f;
+        speedH = 2.0f;
+        speedV = 2.0f;
     }
 
 

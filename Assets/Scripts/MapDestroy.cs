@@ -18,9 +18,9 @@ public class MapDestroy : MonoBehaviour
         }
     }
 
-    public static void DestroySampleCube()
+    public static void DestroyMesh(string meshName)
     {
-        var cube = GameObject.Find("SampleCube");
-        if (cube != null) { DestroyImmediate(cube); }
+        var mesh = GameObject.Find(meshName);
+        if (mesh != null) { DestroyImmediate(mesh); }
     }
 }

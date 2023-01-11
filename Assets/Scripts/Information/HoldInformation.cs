@@ -31,6 +31,8 @@ public class HoldInformation : MonoBehaviour
             SetWorldVisual.SetUpWaterView(0.854f, 0.93f, true, (int)Math.Round((float)settings.lightIntensity * 40000), 0, 0.009f, 2f);
         }
         pastIntensity = (float)settings.lightIntensity;
+
+        //GenerateProkaryote.RunProkaryoteGenerate(); //Tested generating files, passed
     }
 
     

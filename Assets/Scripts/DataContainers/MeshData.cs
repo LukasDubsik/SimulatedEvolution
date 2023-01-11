@@ -46,3 +46,9 @@ public class MeshData
     }
 
 }
+
+public struct ReturnBrown
+{
+    public UnityEngine.Vector3 transposition_a; //Is a unit vector with magnitude being given separately
+    public UnityEngine.Vector3 angular_a;
+}

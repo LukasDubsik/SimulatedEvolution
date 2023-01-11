@@ -59,6 +59,7 @@ public class WorldSettings : MonoBehaviour
         float inten = float.Parse(intensity);
         if (inten < 0 || inten > 1) { lightIntensityField.text = lightIntensity.ToString(); }
         else { lightIntensity = inten; }
+        //lightIntensity = inten;
     }
 
     //Set water view, 0 = On, 1 = Off
